@@ -1,0 +1,289 @@
+
+mysql> create database ruhande;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use ruhande;
+Database changed
+mysql> create table ngoma(id int(16),first_name char(15),last_name char(20),province char(10),district char(13),sector char(15),cell char(15),village char(15),gender char(10));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql>  insert into ngoma values('00011','nimukuze','anitha','south','huye','ngoma','ruhande','female');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>  insert into ngoma values('00011','nimukuze','anitha','south','huye','ngoma','ruhande','mukoni','female');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values('00022','anaweza','kevine','south','huye','ngoma','mukoni','ruhande','female');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into ngoma values('00033','mugisha','keneth','south','huye','ngoma','mukoni','ruhande','male');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values('00044','rukundo','keneth','south','huye','ngoma','mukoni','ruhande','male');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values('00055','mukundwa','angel','east','nyagatare','matimba','rugarama','kabuga','female');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values('00066','mukundwa','rechal','east','nyagatare','matimba','rugarama','kabuga','female');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values('00077','kundwa','leah','west','rubavu','gisenyi','rugarama','kabuga','female');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values('00088','mutangana','eric','east','gatsibo','kiramuruzi','gakoni','murambi','male');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values('00099','kundwa','naome','west','rubavu','gisenyi','rugarama','kabuga','female');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ngoma values('0010','rukundo','sam','south','huye','ngoma','mukoni','ruhande','male');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from ngoma;
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+
+| id   | first_name | last_name | province | district  | sector     | cell     | village | gender |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+
+|   11 | nimukuze   | anitha    | south    | huye      | ngoma      | ruhande  | mukoni  | female |
+|   22 | anaweza    | kevine    | south    | huye      | ngoma      | mukoni   | ruhande | female |
+|   33 | mugisha    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   |
+|   44 | rukundo    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   |
+|   55 | mukundwa   | angel     | east     | nyagatare | matimba    | rugarama | kabuga  | female |
+|   66 | mukundwa   | rechal    | east     | nyagatare | matimba    | rugarama | kabuga  | female |
+|   77 | kundwa     | leah      | west     | rubavu    | gisenyi    | rugarama | kabuga  | female |
+|   88 | mutangana  | eric      | east     | gatsibo   | kiramuruzi | gakoni   | murambi | male   |
+|   99 | kundwa     | naome     | west     | rubavu    | gisenyi    | rugarama | kabuga  | female |
+|   10 | rukundo    | sam       | south    | huye      | ngoma      | mukoni   | ruhande | male   |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+
+10 rows in set (0.00 sec)
+
+mysql>  alter table ngoma add email varchar(15);
+Query OK, 10 rows affected (0.03 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql>  alter table ngoma add phone_number int(15);
+Query OK, 10 rows affected, 1 warning (0.05 sec)
+Records: 10  Duplicates: 0  Warnings: 1
+
+mysql> select *from ngoma;
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-------+--------------+
+| id   | first_name | last_name | province | district  | sector     | cell     | village | gender | email | phone_number |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-------+--------------+
+|   11 | nimukuze   | anitha    | south    | huye      | ngoma      | ruhande  | mukoni  | female | NULL  |         NULL |
+|   22 | anaweza    | kevine    | south    | huye      | ngoma      | mukoni   | ruhande | female | NULL  |         NULL |
+|   33 | mugisha    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | NULL  |         NULL |
+|   44 | rukundo    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | NULL  |         NULL |
+|   55 | mukundwa   | angel     | east     | nyagatare | matimba    | rugarama | kabuga  | female | NULL  |         NULL |
+|   66 | mukundwa   | rechal    | east     | nyagatare | matimba    | rugarama | kabuga  | female | NULL  |         NULL |
+|   77 | kundwa     | leah      | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | NULL  |         NULL |
+|   88 | mutangana  | eric      | east     | gatsibo   | kiramuruzi | gakoni   | murambi | male   | NULL  |         NULL |
+|   99 | kundwa     | naome     | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | NULL  |         NULL |
+|   10 | rukundo    | sam       | south    | huye      | ngoma      | mukoni   | ruhande | male   | NULL  |         NULL |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> update ngoma set email='amahoro@gmail.com' where id='11'
+    -> update ngoma set email='amahoro@gmail.com' where id='11'
+    -> update ngoma set email='amahoro@gmail.com' where id='11';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'update ngoma set email='amahoro@gmail.com' where id='11'
+update ngoma set email=' at line 2
+mysql> update ngoma set email='amahoro@gmail.com' where id='11';
+Query OK, 1 row affected, 1 warning (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+mysql> update ngoma set email='anaweza@gmail.com' where id='22';
+Query OK, 1 row affected, 1 warning (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+mysql> update ngoma set email='mugisha@gmail.com' where id='33';
+Query OK, 1 row affected, 1 warning (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+mysql> update ngoma set email='rukundo@gmail.com' where id='44';
+Query OK, 1 row affected, 1 warning (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+mysql> update ngoma set email='mukundwa@gmail.com' where id='55';
+Query OK, 1 row affected, 1 warning (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+mysql> update ngoma set email='rechal@gmail.com' where id='66';
+Query OK, 1 row affected, 1 warning (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+mysql> update ngoma set email='kundwa@gmail.com' where id='leah';
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 1
+
+mysql> update ngoma set email='naome@gmail.com' where id='99';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set email='ome@gmail.com' where id='10';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from ngoma;
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+--------------+
+| id   | first_name | last_name | province | district  | sector     | cell     | village | gender | email           | phone_number |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+--------------+
+|   11 | nimukuze   | anitha    | south    | huye      | ngoma      | ruhande  | mukoni  | female | amahoro@gmail.c |         NULL |
+|   22 | anaweza    | kevine    | south    | huye      | ngoma      | mukoni   | ruhande | female | anaweza@gmail.c |         NULL |
+|   33 | mugisha    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | mugisha@gmail.c |         NULL |
+|   44 | rukundo    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | rukundo@gmail.c |         NULL |
+|   55 | mukundwa   | angel     | east     | nyagatare | matimba    | rugarama | kabuga  | female | mukundwa@gmail. |         NULL |
+|   66 | mukundwa   | rechal    | east     | nyagatare | matimba    | rugarama | kabuga  | female | rechal@gmail.co |         NULL |
+|   77 | kundwa     | leah      | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | NULL            |         NULL |
+|   88 | mutangana  | eric      | east     | gatsibo   | kiramuruzi | gakoni   | murambi | male   | NULL            |         NULL |
+|   99 | kundwa     | naome     | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | naome@gmail.com |         NULL |
+|   10 | rukundo    | sam       | south    | huye      | ngoma      | mukoni   | ruhande | male   | ome@gmail.com   |         NULL |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> update ngoma set email='leah@gmail.com' where id='77';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set email='eric@gmail.com' where id='88';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from ngoma;
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+--------------+
+| id   | first_name | last_name | province | district  | sector     | cell     | village | gender | email           | phone_number |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+--------------+
+|   11 | nimukuze   | anitha    | south    | huye      | ngoma      | ruhande  | mukoni  | female | amahoro@gmail.c |         NULL |
+|   22 | anaweza    | kevine    | south    | huye      | ngoma      | mukoni   | ruhande | female | anaweza@gmail.c |         NULL |
+|   33 | mugisha    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | mugisha@gmail.c |         NULL |
+|   44 | rukundo    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | rukundo@gmail.c |         NULL |
+|   55 | mukundwa   | angel     | east     | nyagatare | matimba    | rugarama | kabuga  | female | mukundwa@gmail. |         NULL |
+|   66 | mukundwa   | rechal    | east     | nyagatare | matimba    | rugarama | kabuga  | female | rechal@gmail.co |         NULL |
+|   77 | kundwa     | leah      | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | leah@gmail.com  |         NULL |
+|   88 | mutangana  | eric      | east     | gatsibo   | kiramuruzi | gakoni   | murambi | male   | eric@gmail.com  |         NULL |
+|   99 | kundwa     | naome     | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | naome@gmail.com |         NULL |
+|   10 | rukundo    | sam       | south    | huye      | ngoma      | mukoni   | ruhande | male   | ome@gmail.com   |         NULL |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> update ngoma set phone_number='0787788554' where id='10';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set phone_number='0787788566' where id='11';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set phone_number='0787781166' where id='22';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set phone_number='0787781166' where id='2';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> update ngoma set phone_number='0797781166' where id='33';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set phone_number='0727781166' where id='44';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set phone_number='0737781166' where id='55';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set phone_number='0738881166' where id='66';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set phone_number='0738881166' where id='77';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set phone_number='0738881116' where id='88';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ngoma set phone_number='0738881116' where id='99';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from ngoma;
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+--------------+
+| id   | first_name | last_name | province | district  | sector     | cell     | village | gender | email           | phone_number |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+--------------+
+|   11 | nimukuze   | anitha    | south    | huye      | ngoma      | ruhande  | mukoni  | female | amahoro@gmail.c |    787788566 |
+|   22 | anaweza    | kevine    | south    | huye      | ngoma      | mukoni   | ruhande | female | anaweza@gmail.c |    787781166 |
+|   33 | mugisha    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | mugisha@gmail.c |    797781166 |
+|   44 | rukundo    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | rukundo@gmail.c |    727781166 |
+|   55 | mukundwa   | angel     | east     | nyagatare | matimba    | rugarama | kabuga  | female | mukundwa@gmail. |    737781166 |
+|   66 | mukundwa   | rechal    | east     | nyagatare | matimba    | rugarama | kabuga  | female | rechal@gmail.co |    738881166 |
+|   77 | kundwa     | leah      | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | leah@gmail.com  |    738881166 |
+|   88 | mutangana  | eric      | east     | gatsibo   | kiramuruzi | gakoni   | murambi | male   | eric@gmail.com  |    738881116 |
+|   99 | kundwa     | naome     | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | naome@gmail.com |    738881116 |
+|   10 | rukundo    | sam       | south    | huye      | ngoma      | mukoni   | ruhande | male   | ome@gmail.com   |    787788554 |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> alter table ngoma drop phone_number;
+Query OK, 10 rows affected (0.04 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select *from ngoma;
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+
+| id   | first_name | last_name | province | district  | sector     | cell     | village | gender | email           |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+
+|   11 | nimukuze   | anitha    | south    | huye      | ngoma      | ruhande  | mukoni  | female | amahoro@gmail.c |
+|   22 | anaweza    | kevine    | south    | huye      | ngoma      | mukoni   | ruhande | female | anaweza@gmail.c |
+|   33 | mugisha    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | mugisha@gmail.c |
+|   44 | rukundo    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | rukundo@gmail.c |
+|   55 | mukundwa   | angel     | east     | nyagatare | matimba    | rugarama | kabuga  | female | mukundwa@gmail. |
+|   66 | mukundwa   | rechal    | east     | nyagatare | matimba    | rugarama | kabuga  | female | rechal@gmail.co |
+|   77 | kundwa     | leah      | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | leah@gmail.com  |
+|   88 | mutangana  | eric      | east     | gatsibo   | kiramuruzi | gakoni   | murambi | male   | eric@gmail.com  |
+|   99 | kundwa     | naome     | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | naome@gmail.com |
+|   10 | rukundo    | sam       | south    | huye      | ngoma      | mukoni   | ruhande | male   | ome@gmail.com   |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select *from ngoma where gender='female' or province='south';
++------+------------+-----------+----------+-----------+---------+----------+---------+--------+-----------------+
+| id   | first_name | last_name | province | district  | sector  | cell     | village | gender | email           |
++------+------------+-----------+----------+-----------+---------+----------+---------+--------+-----------------+
+|   11 | nimukuze   | anitha    | south    | huye      | ngoma   | ruhande  | mukoni  | female | amahoro@gmail.c |
+|   22 | anaweza    | kevine    | south    | huye      | ngoma   | mukoni   | ruhande | female | anaweza@gmail.c |
+|   33 | mugisha    | keneth    | south    | huye      | ngoma   | mukoni   | ruhande | male   | mugisha@gmail.c |
+|   44 | rukundo    | keneth    | south    | huye      | ngoma   | mukoni   | ruhande | male   | rukundo@gmail.c |
+|   55 | mukundwa   | angel     | east     | nyagatare | matimba | rugarama | kabuga  | female | mukundwa@gmail. |
+|   66 | mukundwa   | rechal    | east     | nyagatare | matimba | rugarama | kabuga  | female | rechal@gmail.co |
+|   77 | kundwa     | leah      | west     | rubavu    | gisenyi | rugarama | kabuga  | female | leah@gmail.com  |
+|   99 | kundwa     | naome     | west     | rubavu    | gisenyi | rugarama | kabuga  | female | naome@gmail.com |
+|   10 | rukundo    | sam       | south    | huye      | ngoma   | mukoni   | ruhande | male   | ome@gmail.com   |
++------+------------+-----------+----------+-----------+---------+----------+---------+--------+-----------------+
+9 rows in set (0.00 sec)
+
+mysql> select *from ngoma where gender='female' and province='south';
++------+------------+-----------+----------+----------+--------+---------+---------+--------+-----------------+
+| id   | first_name | last_name | province | district | sector | cell    | village | gender | email           |
++------+------------+-----------+----------+----------+--------+---------+---------+--------+-----------------+
+|   11 | nimukuze   | anitha    | south    | huye     | ngoma  | ruhande | mukoni  | female | amahoro@gmail.c |
+|   22 | anaweza    | kevine    | south    | huye     | ngoma  | mukoni  | ruhande | female | anaweza@gmail.c |
++------+------------+-----------+----------+----------+--------+---------+---------+--------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> select *from ngoma;
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+
+| id   | first_name | last_name | province | district  | sector     | cell     | village | gender | email           |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+
+|   11 | nimukuze   | anitha    | south    | huye      | ngoma      | ruhande  | mukoni  | female | amahoro@gmail.c |
+|   22 | anaweza    | kevine    | south    | huye      | ngoma      | mukoni   | ruhande | female | anaweza@gmail.c |
+|   33 | mugisha    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | mugisha@gmail.c |
+|   44 | rukundo    | keneth    | south    | huye      | ngoma      | mukoni   | ruhande | male   | rukundo@gmail.c |
+|   55 | mukundwa   | angel     | east     | nyagatare | matimba    | rugarama | kabuga  | female | mukundwa@gmail. |
+|   66 | mukundwa   | rechal    | east     | nyagatare | matimba    | rugarama | kabuga  | female | rechal@gmail.co |
+|   77 | kundwa     | leah      | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | leah@gmail.com  |
+|   88 | mutangana  | eric      | east     | gatsibo   | kiramuruzi | gakoni   | murambi | male   | eric@gmail.com  |
+|   99 | kundwa     | naome     | west     | rubavu    | gisenyi    | rugarama | kabuga  | female | naome@gmail.com |
+|   10 | rukundo    | sam       | south    | huye      | ngoma      | mukoni   | ruhande | male   | ome@gmail.com   |
++------+------------+-----------+----------+-----------+------------+----------+---------+--------+-----------------+
+10 rows in set (0.00 sec)
